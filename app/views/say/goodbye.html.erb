@@ -1,3 +1,9 @@
 <h1>Goodbye!</h1>
+<p>Files and directories list:</p>
+<ul>
+	<% @files.each do |item| %>
+		<li><%= item %></li>
+	<% end %>
+</ul>
 <p>it was nice having you here</p>
 <%= button_to "Time to say hello", say_hello_path, method: 'get' %>
