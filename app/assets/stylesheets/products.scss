@@ -13,12 +13,11 @@
 	}
 
 	.list_image {
-		with: 60px;
-		heigh: 70px;
+		width: 110px;
 	}
 
 	.list_description {
-		with: 60%;
+		width: 80%;
 
 		dl {
 			margin: 0;
@@ -26,7 +25,7 @@
 
 		dt {
 			color: #224;
-			font-weith: bold;
+			font-weight: bold;
 			font-size: larger;
 		}
 
