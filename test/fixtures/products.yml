@@ -11,3 +11,15 @@ two:
   description: 
   image_url: MyString
   price: 9.99
+
+heinlein:
+  title: Stranger in a Strange Land
+  author: Heinlein Robert
+  description: 
+    The story focuses on a human raised on Mars and his adaptation to, 
+    and understanding of, humans and their culture. It is set in a post-third 
+    world war United States, where organized religions are politically powerful. 
+    There is a World Federation of Free Nations, including the demilitarized U.S., 
+    with a world government supported by Special Service troops.
+  image_url: blank.jpg
+  price: 15.45

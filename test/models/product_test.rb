@@ -2,8 +2,10 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
 
+  fixtures :products
+
   setup do
-    @correct_book = { title: 'Simple book',
+    @sample_book = { title: 'Simple book',
                       author: 'Homer Simpson',
                       description: 'Bla, bla, bla!',
                       image_url: 'blank.jpg',
@@ -20,7 +22,7 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "Products price must be positive" do
-    product = Product.new(@correct_book)
+    product = Product.new(@sample_book)
 
     product.price = -1
     assert product.invalid?
@@ -37,7 +39,7 @@ class ProductTest < ActiveSupport::TestCase
   test "Image URL must be correct" do
     good = %w{ cover.gif cover.jpg cover.png cover.JPG COVER.Png http://site.my/img/cover.gif }
     bad = %w{ cover cover.doc cover.jpg.1 cover.jpg/one }
-    product = Product.new(@correct_book)
+    product = Product.new(@sample_book)
 
     good.each do |sample_image_url|
       product.image_url = sample_image_url
@@ -48,6 +50,13 @@ class ProductTest < ActiveSupport::TestCase
       product.image_url = sample_image_url
       assert product.invalid?, "#{sample_image_url} shouldn't be valid"
     end
+  end
+
+  test "product is not valid without a unique title" do
+    @sample_book[:title] = products(:heinlein).title
+    product = Product.new(@sample_book)
+    assert product.invalid?
+    assert_equal ["has already been taken"], product.errors[:title]
   end
 
 end
