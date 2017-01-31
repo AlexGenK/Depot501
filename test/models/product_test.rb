@@ -59,4 +59,11 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal ["has already been taken"], product.errors[:title]
   end
 
+  test "product is not valid with too short description" do
+    @sample_book[:description] = 'Too short'
+    product = Product.new(@sample_book)
+    assert product.invalid?
+    assert_equal ["должно быть подлиннее"], product.errors[:description]
+  end
+
 end
